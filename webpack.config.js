@@ -2,7 +2,7 @@ var htmlWebpackPlugin = require('html-webpack-plugin');
 var path = require("path");
 module.exports = {
 	entry:{
-		build:"./src/js/main.js"
+		build:"./react/index.jsx"
 	},
 	output:{
 		path:"./react_build/",
@@ -17,10 +17,7 @@ module.exports = {
 			},
 			{
 				test:/.jsx?$/,
-				loader: 'babel-loader',
-			    query: {
-			        presets: ['es2015']
-			    },
+				loaders:['react-hot','babel?presets[]=es2015&presets[]=react'],
 				exclude:"/node_modules/",
 				include:path.resolve(__dirname,"react")
 			}
