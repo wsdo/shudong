@@ -2,7 +2,7 @@ var React = require("react");
 var ReactDOM = require("react-dom");
 var Hello = React.createClass({
 	render:function(){
-		return <div>123111</div>
+		return <div>1232111111111</div>
 	}
 });
 
