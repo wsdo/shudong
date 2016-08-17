@@ -2,10 +2,10 @@ var htmlWebpackPlugin = require('html-webpack-plugin');
 var path = require("path");
 module.exports = {
 	entry:{
-		build:"./react/index.js"
+		build:"./src/js/main.js"
 	},
 	output:{
-		path:"./react_build/",
+		path:"./build/",
 		filename:"[name].js"
 	},
 	module:{
@@ -20,7 +20,7 @@ module.exports = {
 				loaders:['react-hot','babel?presets[]=es2015&presets[]=react'],
 				// loaders:'react-hot!babel',
 				exclude:"/node_modules/",
-				include:path.resolve(__dirname,"react")
+				include:path.resolve(__dirname,"src")  
 			}
 		]
 	},
