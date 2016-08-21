@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <script type="text/javascript">
+        // class Point {}
+        // Point.name // "Point"
+        // console.log(Point.name);
+        // // class ColorPoint extends Point {}
+        // class ColorPoint extends Point {
+        //   constructor(x, y, color) {
+        //     super(x, y); // 调用父类的constructor(x, y)
+        //     this.color = color;
+        //   }
+        //
+        //   toString() {
+        //     return this.color + ' ' + super.toString(); // 调用父类的toString()
+        //   }
+        // }
+        class Point {
+          constructor(x, y) {
+            this.x = x;
+            this.y = y;
+          }
+        }
+
+        class ColorPoint extends Point {
+          constructor(x, y, color) {
+            // this.color = color; // ReferenceError
+            super(x, y);
+            this.color = color; // 正确
+            console.log(this.color);
+            console.log(this.x);
+            console.log(this.y);
+          }
+        }
+        let cp = new ColorPoint(25, 8, 'green');
+
+            console.log(cp instanceof ColorPoint); // true
+            console.log(cp instanceof Point); // true
+            cp instanceof Point // true
+        </script>
+    </body>
+</html>
