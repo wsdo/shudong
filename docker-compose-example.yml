@@ -1,0 +1,58 @@
+version: '2'
+services:
+
+    web:
+        build: ./
+        volumes:
+            - ./:/var/www/html/
+        links:
+            - db
+        environment:
+            ENABLE_ENV_FILE: 1
+            ENABLE_LOCALCONF: 1
+            API_TOKEN: "<YOUR GITHUB API TOKEN>"
+
+
+        # For Apache based image:
+        ports:
+            - "8080:80"
+
+        # For FPM/HHVM based image:
+        #expose:
+        #    - "9000"
+
+        # Autostart at boottime
+        #restart: always
+
+        # Send log output to syslog
+        #logging:
+        #    driver: "syslog"
+        #    options:
+        #        tag: "docker-web"
+
+    # For FPM/HHVM based image:
+    #nginx:
+    #    build: ./nginx
+    #    restart: always
+    #    ports:
+    #        - "8080:80"
+    #    links:
+    #        - web
+    #    volumes_from:
+    #        - web
+
+    db:
+        image: mysql:5.6
+        ports:
+            - "3306:3306"
+        expose:
+            - "3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: secret-root
+            MYSQL_DATABASE: web
+            MYSQL_USER: web
+            MYSQL_PASSWORD: web
+
+        # Autostart at boottime
+        #restart: always
+
